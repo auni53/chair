@@ -1,30 +1,92 @@
-<!doctype HTML>
-
+<!DOCTYPE html>
 <html>
-
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8" />
+    <meta charset="utf-8">
+    <title>Chair</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <script src="js/misc.js"></script>
-    <script src="js/jquery.js"></script>
-
-    <title>chair</title>
+  
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
 </head>
 <body>
-   
-    <div>
-        <input id="field">
-        <input type="submit" onclick="add()" value="Submit">
-        
-        <h3>Names</h3>
-        <span id="namelist">
-        </span> 
+    <div id="hook"></div>
+    
+    <script type="text/babel">
 
-        <h3>hey</h3>
-        <span id="current"></span
-    </div>
+        var Container = React.createClass({
+          render: function() {
+            return (
+              <div className="Container">
+                <h1>Speaker List</h1>
+                <Add />
+                <SpeakerList list={this.props.list}/>
+                <Current />
+              </div>
+            );
+          }
+        });
+
+        var Add = React.createClass({
+          render: function() {
+            return (
+              <div className="Add">
+                [Add new name form] 
+              </div>
+            );
+          }
+        });
+
+        var list = ["Peter", "Auni"];
+ 
+        var SpeakerList = React.createClass({
+          render: function() {
+            var speakerNodes = this.props.list.map(function (speaker) {
+              return (
+                <Speaker name={speaker} />
+              );
+
+            });
+  
+            return (
+              <div className="SpeakerList">
+                {speakerNodes} 
+              </div>
+            );
+          }
+        });   
+
+        var Speaker = React.createClass({
+          render: function() {
+            return (
+              <div className="speaker">
+                {this.props.name}
+              </div>
+            )
+          }
+
+        });
+
+        var Current = React.createClass({
+          render: function() {
+              
+            return (
+              <div className="Current">
+                [Current name]
+              </div>
+            )
+          }
+        });
+
+        ReactDOM.render(
+          <Container list={list}/>,
+          document.getElementById('hook')
+        );
+
+    </script>
 
 </body>
-
-
 </html>

@@ -1,3 +1,29 @@
-body    { font-family: Helvetica Neue }
+body  { 
+  font-family: Helvetica Neue;
+}
 
-person  { }
+#container  {
+  display: flex;
+  flex-direction: row;
+}
+
+#panel  {
+  padding: 5px; 
+}
+
+#display  { 
+  padding: 5px; padding-top: 25px;
+  margin-left: 15px;
+}
+
+.person  {
+  
+  font-weight: bold;
+  background: #FFE0E0;
+    
+  margin-bottom: 5px;
+  padding: 15px;
+  padding-bottom: 3px; padding-left: 9px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
