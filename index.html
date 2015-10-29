@@ -18,29 +18,50 @@
     <script type="text/babel">
 
         var Container = React.createClass({
+          selectSpeaker: function(name) {
+            console.log(name);
+          },
+          handleAddName: function(name) {
+            var list = this.state.list;
+            var newList = [name].concat(list);
+            this.setState({list: newList});
+          },
+          getInitialState: function() {
+            return {list: ["Peter", "Auni"]};
+          },
           render: function() {
             return (
-              <div className="Container">
+              <div className="container">
                 <h1>Speaker List</h1>
-                <Add />
-                <SpeakerList list={this.props.list}/>
+                <Form add={this.handleAddName} />
+                <SpeakerList list={this.state.list} select={this.selectSpeaker}/>
                 <Current />
               </div>
             );
           }
         });
 
-        var Add = React.createClass({
+        var Form = React.createClass({
+          addName: function(e) {
+            e.preventDefault();
+            var name = this.refs.name.value.trim();
+      
+            if (!name) {
+              return;
+            }
+            this.props.add(name);
+            this.refs.name.value = '';
+            return;
+          },
           render: function() {
             return (
-              <div className="Add">
-                [Add new name form] 
-              </div>
+              <form className="form" onSubmit={this.addName}>
+                <input type="text" placeholder="Name" ref="name" />
+                <input type="submit" value="Add" />
+              </form>
             );
           }
         });
-
-        var list = ["Peter", "Auni"];
  
         var SpeakerList = React.createClass({
           render: function() {
@@ -48,11 +69,10 @@
               return (
                 <Speaker name={speaker} />
               );
-
             });
   
             return (
-              <div className="SpeakerList">
+              <div className="speakerList">
                 {speakerNodes} 
               </div>
             );
@@ -60,29 +80,33 @@
         });   
 
         var Speaker = React.createClass({
+          handleClick: function(event) {
+            console.log(this.props.name);
+          },  
           render: function() {
             return (
-              <div className="speaker">
+              <div className="speaker" onClick={this.handleClick}>
                 {this.props.name}
               </div>
-            )
+            );
           }
-
         });
 
         var Current = React.createClass({
+          getInitialState: function() {
+            return {cur: "None"};
+          },
           render: function() {
-              
             return (
-              <div className="Current">
-                [Current name]
+              <div className="current">
+                {this.state.cur}
               </div>
             )
           }
         });
 
         ReactDOM.render(
-          <Container list={list}/>,
+          <Container />,
           document.getElementById('hook')
         );
 
