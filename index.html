@@ -13,34 +13,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
 </head>
 <body>
+    <h1>Chair</h1>
     <div id="hook"></div>
  
     <script type="text/babel">
 
         var Container = React.createClass({
-          selectSpeaker: function(name) {
+          handleSelect: function(name) {
             this.setState({current: name});
+            this.removeName(name);
+          },
+          removeName: function(name) {
+            var newList = this.state.list;
+            var i = newList.indexOf(name);
+            newList.splice(i, 1);
+            this.setState({list: newList});
           },
           handleAddName: function(name) {
             var list = this.state.list;
-            var newList = [name].concat(list);
+            var newList = list.concat([name]);
             this.setState({list: newList});
           },
           getInitialState: function() {
-            return {list: ["Peter", "Auni"], 
+            return {list: ["Peter Huycke", "Auni Ahsan"], 
                     current: "None"};
           },
           render: function() {
             return (
               <div className="container">
-                <h1>Speaker List</h1>
-                <Form add={this.handleAddName} />
-                <SpeakerList list={this.state.list} select={this.selectSpeaker} />
-                <Current cur={this.state.current} />
+                <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} />
+                <Current name={this.state.current} />
               </div>
             );
           }
         });
+
+        var SpeakerList = React.createClass({
+          render: function() {
+            var select = this.props.select;
+            var speakerNodes = this.props.list.map(function (speaker) {
+              return (
+                <Speaker key={speaker} name={speaker} select={select}/>
+              );
+            });
+  
+            return (
+              <div className="speakerList">
+                <Form add={this.props.add} />
+                <div className="list">
+                  {speakerNodes} 
+                </div>
+              </div>
+            );
+          }
+        });   
 
         var Form = React.createClass({
           addName: function(e) {
@@ -63,28 +89,10 @@
             );
           }
         });
- 
-        var SpeakerList = React.createClass({
-          render: function() {
-            var select = this.props.select;
-            var speakerNodes = this.props.list.map(function (speaker) {
-              return (
-                <Speaker key={speaker} name={speaker} select={select}/>
-              );
-            });
-  
-            return (
-              <div className="speakerList">
-                {speakerNodes} 
-              </div>
-            );
-          }
-        });   
 
         var Speaker = React.createClass({
           handleClick: function(event) {
             this.props.select(this.props.name);
-        
           },  
           render: function() {
             return (
@@ -102,10 +110,58 @@
           render: function() {
             return (
               <div className="current">
-                {this.props.cur}
+                <span className="curName">{this.props.name}</span>
+                <Timer name={this.props.name}/>
               </div>
             );
           }
+        });
+
+        var Timer = React.createClass({
+          getInitialState: function() {
+            return {time: 180, timer: 0};
+          },
+          componentWillMount: function() {
+            this.setState({time: 180});
+          },
+          startTime: function() {
+            var newTime = this.state.time - 1;
+            this.setState({time: newTime});
+          },
+          getMin: function() {
+            return Math.floor(this.state.time / 60);
+          },
+          getSec: function() {
+            var seconds = this.state.time % 60; 
+            if (seconds < 10) 
+              seconds = "0" + seconds;
+    
+            return seconds;
+          },
+          start: function() {
+          },
+          stop: function() {
+            clearInterval(this.state.interval); 
+          }, 
+          handleClick: function() {
+            var timer = this.state.timer;
+        
+            if (timer == 0) {
+              var newTimer = setInterval(this.startTime, 1000);
+              this.setState({timer: newTimer});
+            } 
+            else {
+              clearInterval(this.state.timer);
+              this.setState({timer: 0});
+            }
+          },
+          render: function() {
+            return (
+              <div className="timer" onClick={this.handleClick}>
+                <span className="time">{this.getMin()}:{this.getSec()}</span><br/>
+              </div>
+            ); 
+          } 
         });
 
         ReactDOM.render(

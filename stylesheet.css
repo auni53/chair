@@ -1,15 +1,72 @@
 body  { 
   font-family: Helvetica Neue;
+  color: #422F23;
+  background-color: #FFF1D8;
 }
 
-.speakerList  {
-  border: 1px solid black;
-  width: 100px; 
+h1 {
+  font-size: 4em;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  top: 100px;
+  bottom: 200px;
+} 
+
+.list {
+  border: 3px solid #702F2E;
+  border-radius: 7px;
+  height: 100%;
+  width: 90%; 
   margin-top: 10px;
-  margin-bottom: 15px; 
+}
+
+.speakerList {
+  width: 30%;
 }
 
 .speaker  {
+  font-size: 2em;
   font-weight: bold;
-  border: 1px dashed black;
+  
+  padding: 2px;
+  padding-left: 5px;
+  margin-top: 5px;
+  margin-bottom: -1px;
+  border-bottom: 1px dashed #702F2E;
+  
+  overflow: scroll;
+}
+
+.current {
+  display: flex; flex-direction: column;
+
+  width: 70%;
+  margin: 10px;
+  font-size: 15em;
+  
+  justify-content: center;
+  align-items: center;
+}
+
+.curName {
+  font-size: 0.25em;
+}
+
+.timer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.timer:hover {
+  background-color: #BAA27C;
+}
+
+.time {
+  margin-top: 0px;
 }
