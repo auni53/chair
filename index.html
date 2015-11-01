@@ -14,12 +14,12 @@
 </head>
 <body>
     <div id="hook"></div>
-    
+ 
     <script type="text/babel">
 
         var Container = React.createClass({
           selectSpeaker: function(name) {
-            console.log(name);
+            this.setState({current: name});
           },
           handleAddName: function(name) {
             var list = this.state.list;
@@ -27,15 +27,16 @@
             this.setState({list: newList});
           },
           getInitialState: function() {
-            return {list: ["Peter", "Auni"]};
+            return {list: ["Peter", "Auni"], 
+                    current: "None"};
           },
           render: function() {
             return (
               <div className="container">
                 <h1>Speaker List</h1>
                 <Form add={this.handleAddName} />
-                <SpeakerList list={this.state.list} select={this.selectSpeaker}/>
-                <Current />
+                <SpeakerList list={this.state.list} select={this.selectSpeaker} />
+                <Current cur={this.state.current} />
               </div>
             );
           }
@@ -45,7 +46,7 @@
           addName: function(e) {
             e.preventDefault();
             var name = this.refs.name.value.trim();
-      
+ 
             if (!name) {
               return;
             }
@@ -65,9 +66,10 @@
  
         var SpeakerList = React.createClass({
           render: function() {
+            var select = this.props.select;
             var speakerNodes = this.props.list.map(function (speaker) {
               return (
-                <Speaker name={speaker} />
+                <Speaker key={speaker} name={speaker} select={select}/>
               );
             });
   
@@ -81,7 +83,8 @@
 
         var Speaker = React.createClass({
           handleClick: function(event) {
-            console.log(this.props.name);
+            this.props.select(this.props.name);
+        
           },  
           render: function() {
             return (
@@ -94,14 +97,14 @@
 
         var Current = React.createClass({
           getInitialState: function() {
-            return {cur: "None"};
+            return null;
           },
           render: function() {
             return (
               <div className="current">
-                {this.state.cur}
+                {this.props.cur}
               </div>
-            )
+            );
           }
         });
 
