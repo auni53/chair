@@ -82,9 +82,9 @@
           },
           render: function() {
             return (
-              <form className="form" onSubmit={this.addName}>
-                <input type="text" placeholder="Name" ref="name" />
-                <input type="submit" value="Add" />
+              <form id="form" className="form" onSubmit={this.addName}>
+                <input type="text" placeholder="Name" ref="name" required/>
+                <input id="add" type="submit" value="Add" />
               </form>
             );
           }
@@ -146,11 +146,11 @@
           handleClick: function() {
             var timer = this.state.timer;
         
-            if (timer == 0) {
+            if (timer == 0) { // Timer is not running, or paused
               var newTimer = setInterval(this.startTime, 1000);
               this.setState({timer: newTimer});
             } 
-            else {
+            else { // Timer is running
               clearInterval(this.state.timer);
               this.setState({timer: 0});
             }

@@ -2,12 +2,14 @@ body  {
   font-family: Helvetica Neue;
   color: #422F23;
   background-color: #FFF1D8;
+  margin: 0px;
 }
 
 h1 {
   font-size: 4em;
   margin-top: 0px;
   margin-bottom: 20px;
+  font-family: Gotham, Helvetica Neue;
 }
 
 .container {
@@ -15,19 +17,48 @@ h1 {
   flex-direction: row;
   width: 100%;
   top: 100px;
-  bottom: 200px;
 } 
-
-.list {
-  border: 3px solid #702F2E;
-  border-radius: 7px;
-  height: 100%;
-  width: 90%; 
-  margin-top: 10px;
-}
 
 .speakerList {
   width: 30%;
+  padding-top: 10px;
+
+  border-right: 5px solid #702F2E;
+  background-color: #e5d9c3;
+}
+
+.form {
+  display: flex;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+input[type="text"] {
+  display: block;
+  margin-right: 10px;
+  width: 70%;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+#add {
+  font-size: 18px; 
+  margin-top: 3px;
+  justify-content: center;
+}
+
+
+.list {
+  height: 100%;
+  width: 100%; 
+  margin-top: 10px;
 }
 
 .speaker  {
@@ -35,7 +66,7 @@ h1 {
   font-weight: bold;
   
   padding: 2px;
-  padding-left: 5px;
+  padding-left: 10px;
   margin-top: 5px;
   margin-bottom: -1px;
   border-bottom: 1px dashed #702F2E;
@@ -48,6 +79,7 @@ h1 {
 
   width: 70%;
   margin: 10px;
+  padding-bottom: 200px;
   font-size: 15em;
   
   justify-content: center;
@@ -55,16 +87,22 @@ h1 {
 }
 
 .curName {
+  font-weight: bold;
   font-size: 0.25em;
 }
 
 .timer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
 }
 
-.timer:hover {
-  background-color: #BAA27C;
+/*
+https://coolors.co/app/702f2e-baa27c-422f23-996746-fff1d8
+*/
+
+.speaker:hover, .timer:hover {
+  background-color: #F2E4CD;
+  border-radius: 10px;
 }
 
 .time {
