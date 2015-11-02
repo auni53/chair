@@ -1,8 +1,13 @@
 body  { 
-  font-family: Helvetica Neue;
-  color: #422F23;
-  background-color: #FFF1D8;
+  font-family: Helvetica Neue, sans-serif;
+  color: #666060;
+  background-color: #E1EAED;
   margin: 0px;
+}
+
+#top {
+  background-color: #938C8C; 
+  margin-bottom: 0px;
 }
 
 h1 {
@@ -25,8 +30,8 @@ h1 {
   width: 30%;
   padding-top: 10px;
 
+  background-color: #CFD1B5;
   border-right: 5px solid #702F2E;
-  background-color: #e5d9c3;
 }
 
 .form {

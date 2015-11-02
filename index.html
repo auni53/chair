@@ -13,19 +13,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
 </head>
 <body>
-    <h1>Chair</h1>
+    <div id="top"><h1>Chair</h1></div>
     <div id="hook"></div>
  
     <script type="text/babel">
-
-        if (typeof window !== 'undefined') {
-            window.React = React;
-        }
 
         var Container = React.createClass({
           handleSelect: function(name) {
             this.setState({current: name});
             this.removeName(name);
+            console.log(this.children);
           },
           removeName: function(name) {
             var newList = this.state.list;
@@ -115,7 +112,7 @@
           render: function() {
             return (
               <div className="current">
-                <span className="curName" >{this.props.name}</span>
+                <span className="curName">{this.props.name}</span>
                 <Timer/>
               </div>
             );
