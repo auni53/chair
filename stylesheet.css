@@ -9,7 +9,9 @@ h1 {
   font-size: 4em;
   margin-top: 0px;
   margin-bottom: 20px;
+  margin-left: 5px;
   font-family: Gotham, Helvetica Neue;
+  text-decoration: underline;
 }
 
 .container {

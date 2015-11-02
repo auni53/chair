@@ -121,8 +121,10 @@
           getInitialState: function() {
             return {time: 180, timer: 0};
           },
-          componentWillMount: function() {
+          componentWillReceiveProps: function() {
             this.setState({time: 180});
+            clearInterval(this.state.timer);
+            this.setState({timer: 0});
           },
           startTime: function() {
             var newTime = this.state.time - 1;
