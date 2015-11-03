@@ -3,14 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>Chair</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css/awesomplete.css">
+    
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+    <script src="scripts/awesomplete.min.js"></script>
 </head>
 <body>
     <div id="hook"></div>
@@ -71,6 +75,12 @@
         });   
 
         var Form = React.createClass({
+          componentDidMount: function() {
+            var input = document.getElementById("input");
+            new Awesomplete(input, {
+              list: ["Ben Coleman", "Ryan Gomes", "Jasmine Denike", "Sania Khan", "Vere Marie Khan", "Akshan Bansal", "Ebi Agbeyegbe", "Nick Grant", "Khrystyna Zhuk", "Nicole Thompson", "Angelo Gio Matteo", "Steve Warner", "Auni Ahsan", "Daman Singh", "Ryan Hume", "Jess Afonso", "Priya Kaur", "Danielle Sardella", "Danni Zuo", "Peter Zhang", "Zachary Bist", "Matthew Celestial", "Cailyn Stewart", "Nathan Gibson", "Anastasia Harovska", "Riaz Sayani-Mulji", "Rebecca Jackson", "Caitlin Pascoe", "Ilan Zimner", "Jason Lo", "Mattias Memmel", "Ernest Manalo", "John Deepak Sundara", "Nia Imara Barberousse", "Carlos Antonio Fiel", "Josh Calafato", "Raffi Dergalstanian", "Emily Xu", "Adriana Menghi", "Nasrin Gh", "Emerson Calcada", "Maheen Farrukh", "Abdulla Omari", "Falhad Mohamoud", "Farah Noori", "Hashim Yussuf", "Sana Chishti"] 
+            }); 
+          },
           addName: function(e) {
             e.preventDefault();
             var name = this.refs.name.value.trim();
@@ -85,7 +95,7 @@
           render: function() {
             return (
               <form id="form" className="form" onSubmit={this.addName}>
-                <input id="input" type="text" placeholder="" ref="name" required/>
+                <input className="awesomplete" id="input" type="text" ref="name" required/>
               </form>
             );
           }
