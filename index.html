@@ -41,7 +41,7 @@
           render: function() {
             return (
               <div className="container">
-                <div id="top"><h1>SpeakUp</h1></div><br/>
+                <div className="topbar"><h1>SpeakOut</h1></div><br/>
                 <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} />
                 <Current name={this.state.current} />
               </div>
@@ -85,8 +85,7 @@
           render: function() {
             return (
               <form id="form" className="form" onSubmit={this.addName}>
-                <input type="text" placeholder="Name" ref="name" required/>
-                <input id="add" type="submit" value="Add" />
+                <input id="input" type="text" placeholder="" ref="name" required/>
               </form>
             );
           }
