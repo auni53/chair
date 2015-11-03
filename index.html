@@ -13,7 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
 </head>
 <body>
-    <div id="top"><h1>Chair</h1></div>
     <div id="hook"></div>
  
     <script type="text/babel">
@@ -42,6 +41,7 @@
           render: function() {
             return (
               <div className="container">
+                <div id="top"><h1>Chair</h1></div><br/>
                 <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} />
                 <Current name={this.state.current} />
               </div>
@@ -59,7 +59,7 @@
             });
   
             return (
-              <div className="speakerList">
+              <div className="sidebar">
                 <Form add={this.props.add} />
                 <hr />
                 <div className="list">
