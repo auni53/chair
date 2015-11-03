@@ -13,18 +13,6 @@ body {
   margin: 0px;
 }
 
-.topbar {
-  background-color: #8DA0B2;
- 
-  width: 100%; 
-  height: 10.5%;
-  flex-basis: auto;
-  margin-bottom: 0px;
-  border-bottom: 2px solid #666060;
-  padding-top: 4px;
-  padding-bottom: 0px;
-}
-
 h1 {
   font-family: Gotham, Helvetica Neue, sans-serif;
   font-weight: normal;
@@ -39,9 +27,22 @@ h1 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
   width: 100%;
   height: 100%;
 } 
+
+.topbar {
+  flex-basis: auto;
+
+  background-color: #8DA0B2;
+  width: 100%; 
+  height: 10.5%;
+  margin-bottom: 0px;
+  border-bottom: 2px solid #666060;
+  padding-top: 4px;
+  padding-bottom: 0px;
+}
 
 .sidebar {
   width: 22%;
@@ -50,15 +51,29 @@ h1 {
   border-right: 4px solid #666060;
 }
 
+.current {
+  display: flex; 
+  flex-direction: column;
+
+  width: 77%;
+  height: 88.5%;
+  margin: 0px;
+  font-size: 15em;
+  font-size: 20vw;
+  
+  justify-content: center;
+  align-items: center;
+}
+
 hr {
   margin-top: 0px;
   margin-bottom: 0px;
   color: black;
 }
 
-.form {
-  display: flex;
-  border-radius: 4px;
+.awesomplete {
+  width: 94%;
+  margin-left: 1%;
 }
 
 input[type="text"] {
@@ -100,18 +115,6 @@ input[type="text"]:focus {
   overflow: auto;
 }
 
-.current {
-  display: flex; flex-direction: column;
-
-  width: 77%;
-  height: 88.5%;
-  margin: 0px;
-  font-size: 15em;
-  
-  justify-content: center;
-  align-items: center;
-}
-
 .curName {
   font-weight: bold;
   font-size: 0.25em;
@@ -134,4 +137,26 @@ https://coolors.co/app/702f2e-baa27c-422f23-996746-fff1d8
 
 .time {
   margin-top: 0px;
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column; 
+    flex-wrap: nowrap;
+  }
+  .current {
+    order: 2;
+    width: 100%;
+    height: initial;
+  }
+  .sidebar {
+    order: 3;
+    width: 100%;
+  }
+  .timer {
+    margin-bottom: 50px;
+  }
+  #input, .awesomplete {
+    width: 100%;
+  }
 }
