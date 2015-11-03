@@ -21,7 +21,8 @@ body {
 }
 
 h1 {
-  font-family: Gotham, Helvetica Neue;
+  font-family: Gotham, Helvetica Neue, sans-serif;
+  font-weight: normal;
   font-size: 4em;
 
   margin-top: 0px;
