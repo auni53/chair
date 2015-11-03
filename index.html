@@ -40,7 +40,7 @@
           },
           getInitialState: function() {
             return {list: ["Peter Huycke", "Auni Ahsan"], 
-                    current: "-"};
+                    current: "~"};
           },
           render: function() {
             return (
@@ -105,7 +105,8 @@
         });
 
         var Speaker = React.createClass({
-          handleClick: function(event) {
+          handleClick: function(e) {
+            e.preventDefault();
             this.props.select(this.props.name);
           },  
           render: function() {
