@@ -135,8 +135,9 @@
           },
           getSec: function() {
             var seconds = this.state.time % 60; 
-            if (seconds < 10) 
+            if (seconds < 10) {
               seconds = "0" + seconds;
+            }
     
             return seconds;
           },
@@ -154,9 +155,9 @@
           },
           render: function() {
             return (
-              <div className="timer" onClick={this.handleClick}>
+              <btn className="timer" onClick={this.handleClick}>
                 <span className="time">{this.getMin()}:{this.getSec()}</span><br/>
-              </div>
+              </btn>
             ); 
           } 
         });
