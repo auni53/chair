@@ -22,10 +22,19 @@
     <script type="text/babel">
 
         var Container = React.createClass({
+          start: function() {
+            this.timeDown();
+            var newTimer = setInterval(this.timeDown, 1000);
+            this.setState({timer: newTimer});
+          },
+          timeDown: function() {
+            var newTime = this.state.time - 1;
+            this.setState({time: newTime});
+          },
           handleSelect: function(name) {
-            this.setState({current: name});
+            this.setState({current: name, time: 180, timer: 0});
+            clearInterval(this.state.timer);
             this.removeName(name);
-            console.log(this.children);
           },
           removeName: function(name) {
             var newList = this.state.list;
@@ -39,7 +48,8 @@
             this.setState({list: newList});
           },
           getInitialState: function() {
-            return {list: ["Peter Huycke", "Auni Ahsan"], 
+            return {list: ["Peter Huycke", "Auni Ahsan"],
+                    time: 180, timer: 0, 
                     current: "~"};
           },
           render: function() {
@@ -47,7 +57,7 @@
               <div className="container">
                 <div className="topbar"><h1>SpeakOut</h1></div><br/>
                 <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} />
-                <Current name={this.state.current} />
+                <Current name={this.state.current} time={this.state.time} timer={this.state.timer} start={this.start}/>
               </div>
             );
           }
@@ -119,36 +129,22 @@
         });
 
         var Current = React.createClass({
-          getInitialState: function() {
-            return null;
-          },
           render: function() {
             return (
               <div className="current">
                 <span className="curName">{this.props.name}</span>
-                <Timer/>
+                <Timer time={this.props.time} timer={this.props.timer} start={this.props.start} />
               </div>
             );
           }
         });
 
         var Timer = React.createClass({
-          getInitialState: function() {
-            return {time: 180, timer: 0};
-          },
-          componentWillReceiveProps: function() {
-            this.setState({time: 180});
-            clearInterval(this.state.timer);
-          },
-          timeDown: function() {
-            var newTime = this.state.time - 1;
-            this.setState({time: newTime});
-          },
           getMin: function() {
-            return Math.floor(this.state.time / 60);
+            return Math.floor(this.props.time / 60);
           },
           getSec: function() {
-            var seconds = this.state.time % 60; 
+            var seconds = this.props.time % 60; 
             if (seconds < 10) {
               seconds = "0" + seconds;
             }
@@ -156,16 +152,13 @@
             return seconds;
           },
           handleClick: function() {
-            var timer = this.state.timer;
+            var timer = this.props.timer;
         
             if (timer == 0) { // Timer is not running, or paused
-              this.timeDown();
-              var newTimer = setInterval(this.timeDown, 1000);
-              this.setState({timer: newTimer});
+              this.props.start();
             } 
             else { // Timer is running
-              clearInterval(this.state.timer);
-              this.setState({timer: 0});
+              clearInterval(this.props.timer);
             }
           },
           render: function() {
