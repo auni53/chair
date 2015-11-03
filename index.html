@@ -136,7 +136,7 @@
             this.setState({time: 180});
             clearInterval(this.state.timer);
           },
-          startTime: function() {
+          timeDown: function() {
             var newTime = this.state.time - 1;
             this.setState({time: newTime});
           },
@@ -155,7 +155,8 @@
             var timer = this.state.timer;
         
             if (timer == 0) { // Timer is not running, or paused
-              var newTimer = setInterval(this.startTime, 1000);
+              this.timeDown();
+              var newTimer = setInterval(this.timeDown, 1000);
               this.setState({timer: newTimer});
             } 
             else { // Timer is running
