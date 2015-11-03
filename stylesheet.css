@@ -97,7 +97,7 @@ input[type="text"]:focus {
   padding-left: 10px;
   border-bottom: 1px dashed #702F2E;
   
-  overflow: scroll;
+  overflow: auto;
 }
 
 .current {
