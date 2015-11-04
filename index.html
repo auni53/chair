@@ -23,30 +23,34 @@
 
         var Container = React.createClass({
           start: function() {
+            if (this.state.time == 0) return; // Disable start when time complete
             this.timeDown();
-            var newTimer = setInterval(this.timeDown, 1000);
+            var newTimer = setInterval(this.timeDown, 1000); // Decerent time every 1000 ms
             this.setState({timer: newTimer});
           },
-          stop: function() {
+          stop: function() { // Pause the timer
             clearInterval(this.state.timer);
-            this.setState({timer: 0});
+            this.setState({timer: 0}); // Reset timer variable
           },
-          timeDown: function() {
+          timeDown: function() { // Decrement time by a second
             var newTime = this.state.time - 1;
             this.setState({time: newTime});
+            if (newTime == 0) { // End timer when time is complete
+              clearInterval(this.state.timer);
+            }
           },
-          handleSelect: function(name) {
+          handleSelect: function(name) { // Call when a new name is selected
             this.setState({current: name, time: 180, timer: 0});
             clearInterval(this.state.timer);
             this.removeName(name);
           },
-          removeName: function(name) {
+          removeName: function(name) { // Remove a name from the speaking list
             var newList = this.state.list;
             var i = newList.indexOf(name);
             newList.splice(i, 1);
             this.setState({list: newList});
           },
-          handleAddName: function(name) {
+          handleAddName: function(name) { // Call when a new name is added
             var list = this.state.list;
             var newList = list.concat([name]);
             this.setState({list: newList});
@@ -68,7 +72,7 @@
           }
         });
 
-        var SpeakerList = React.createClass({
+        var SpeakerList = React.createClass({ // Contains the sidebar
           render: function() {
             var select = this.props.select;
             var speakerNodes = this.props.list.map(function (speaker) {
@@ -175,6 +179,7 @@
             return (
               <btn className="timer" onClick={this.handleClick}>
                 <span className="time">{this.getMin()}:{this.getSec()}</span><br/>
+                {this.props.timer == 0 ? return "&#10073;&#10073;" : return "&#9658"}
               </btn>
             ); 
           } 
