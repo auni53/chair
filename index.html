@@ -179,7 +179,11 @@
             return (
               <btn className="timer" onClick={this.handleClick}>
                 <span className="time">{this.getMin()}:{this.getSec()}</span><br/>
-                {this.props.timer == 0 ? return "&#10073;&#10073;" : return "&#9658"}
+                <div className="icon">
+                    {this.props.timer == 0 ?  
+                        String.fromCharCode(9658) :
+                        String.fromCharCode(10073) + String.fromCharCode(10073) }
+                </div>
               </btn>
             ); 
           } 
