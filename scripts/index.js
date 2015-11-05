@@ -1,8 +1,9 @@
 var Container = React.createClass({
   start: function() {
     if (this.state.time == 0) return; // Disable start when time complete
-    this.changeTime(-1);
-    var newTimer = setInterval(function() {this.changeTime(-1); }, 1000); // Decrement time every 1000 ms
+    var changeTime = this.changeTime;
+    changeTime(-1);
+    var newTimer = setInterval(function(){changeTime(-1); }, 1000); // Decrement time every 1000 ms
     this.setState({timer: newTimer});
   },
   stop: function() { // Pause the timer
