@@ -55,10 +55,14 @@
             var newList = list.concat([name]);
             this.setState({list: newList});
           },
+          changeTime: function(diff) {
+            var newTime = this.state.time + diff;
+            this.setState({time: newTime});
+          },
           getInitialState: function() {
             return {list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"],
                     time: 180, timer: 0, 
-                    current: "~"};
+                    current: ""};
           },
           render: function() {
             return (
@@ -67,7 +71,7 @@
                 <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} 
                              remove={this.removeName}/>
                 <Current name={this.state.current} time={this.state.time} timer={this.state.timer} 
-                         start={this.start} stop={this.stop}/>
+                         start={this.start} stop={this.stop} changeTime={this.changeTime} />
               </div>
             );
           }
@@ -150,9 +154,12 @@
           render: function() {
             return (
               <div className="current">
-                <span className="curName">{this.props.name}</span>
+                <span className="curName">
+                  {this.props.name == "" ? <br/> : this.props.name}
+                </span>
                 <Timer time={this.props.time} timer={this.props.timer} 
-                       start={this.props.start} stop={this.props.stop} />
+                       start={this.props.start} stop={this.props.stop} 
+                       changeTime={this.props.changeTime} />
               </div>
             );
           }
@@ -177,23 +184,31 @@
               this.props.start();
             } 
             else { // Timer is running
-              this.props.stop(); /*
-              console.log(this.props.timer);
-              clearInterval(this.props.timer);
-              console.log('PAUSED');
-              console.log(this.props.timer); */
+              this.props.stop();
             }
+          },
+          handleTime: function(e) { 
+
+            this.props.changeTime(e.target.className == "increase" ?
+                                  60 : -60);
           },
           render: function() {
             return (
-              <btn className="timer" onClick={this.handleClick}>
-                <span className="time">{this.getMin()}:{this.getSec()}</span><br/>
-                <div className="icon">
-                    {this.props.timer == 0 ?  
-                        String.fromCharCode(9658) :
-                        String.fromCharCode(10073) + String.fromCharCode(10073) }
-                </div>
-              </btn>
+              <div className="timerContainer">
+                <btn className="timer" onClick={this.handleClick}>
+                  <span className="timerMain">{this.getMin()}:{this.getSec()}</span><br/>
+                  <div className="icon">
+                      {this.props.timer == 0 ?
+                       String.fromCharCode(9658) :
+                       String.fromCharCode(10073) + String.fromCharCode(10073) }
+                  </div>
+                </btn>
+                <div className="timerButtons">
+                  <btn className="increase" type="button" onClick={this.handleTime}>+</btn>
+                  <btn className="decrease" type="button" onClick={this.handleTime}>-</btn>
+                </div> 
+                   
+              </div>
             ); 
           } 
         });

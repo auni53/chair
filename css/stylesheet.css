@@ -136,8 +136,16 @@ input[type="text"]:focus {
   flex-shrink: 0;
 }
 
+.speaker:hover, .timer:hover {
+  background-color: #C3B299;
+}
+
 .remove:hover {
   background-position: -0 -0px;
+}
+
+.timerContainer {
+  display: flex;
 }
 
 .curName {
@@ -152,17 +160,37 @@ input[type="text"]:focus {
   border-radius: 20px;
 }
 
-/*
-https://coolors.co/app/702f2e-baa27c-422f23-996746-fff1d8
-*/
-
-.speaker:hover, .timer:hover {
-  background-color: #C3B299;
-}
-
 .icon {
   font-size: 5vw;
   text-align: center;
+}
+
+.timerButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 25%;
+}
+
+.increase, .decrease {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background-color: #353535;
+  height: 50px;
+  width: 50px;
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+.decrease {
+  margin-top: 20%;
+}
+
+.increase:hover, .decrease:hover {
+  background-color: #C3B299;
 }
 
 @media (max-width: 500px) {
