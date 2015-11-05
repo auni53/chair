@@ -130,16 +130,17 @@
             e.preventDefault();
             this.props.select(this.props.name);
           },
-          handleRemove: function() {
+          handleRemove: function(e) {
+            e.stopPropagation();
             this.props.remove(this.props.name);
           }, 
           render: function() {
             return (
               <div className="speaker">
-                <div onClick={this.handleClick}>
+                <span onClick={this.handleClick}>
                   {this.props.name}
-                </div>
-                <div className="remove" onClick={this.handleRemove}/>
+                </span>
+                <span className="remove" onClick={this.handleRemove}/>
               </div>
             );
           }

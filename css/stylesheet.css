@@ -129,6 +129,7 @@ input[type="text"]:focus {
  
   height: 20px;
   width: 20px;
+  flex-basis: content;
 }
 
 .remove:hover {
@@ -143,7 +144,7 @@ input[type="text"]:focus {
 .timer {
   padding-left: 35px;
   padding-right: 35px;
-  margin-bottom: 135px;
+  margin-bottom: 75px;
   border-radius: 20px;
 }
 
