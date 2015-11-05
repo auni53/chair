@@ -45,7 +45,7 @@ h1 {
 }
 
 .sidebar {
-  width: 22%;
+  width: 25%;
 
   background-color: #CFD1B5;
   border-right: 4px solid #666060;
@@ -55,10 +55,9 @@ h1 {
   display: flex; 
   flex-direction: column;
 
-  width: 77%;
+  width: 74%;
   height: 88.5%;
   margin: 0px;
-  font-size: 15em;
   font-size: 20vw;
   
   justify-content: center;
@@ -105,6 +104,12 @@ input[type="text"]:focus {
 }
 
 .speaker  {
+  display: flex;  
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
   font-size: 2em;
   font-weight: bold;
   
@@ -113,6 +118,21 @@ input[type="text"]:focus {
   border-bottom: 1px dashed #702F2E;
   
   overflow: auto;
+}
+
+.remove {
+  background-image: url('../res/remove.png');
+  background-repeat: no-repeat;
+  background-size: 20px 80px;
+  background-position: -0px -20px;
+  margin: 0px; 
+ 
+  height: 20px;
+  width: 20px;
+}
+
+.remove:hover {
+  background-position: -0 -0px;
 }
 
 .curName {
@@ -135,8 +155,9 @@ https://coolors.co/app/702f2e-baa27c-422f23-996746-fff1d8
   background-color: #C3B299;
 }
 
-.time {
-  margin-top: 0px;
+.icon {
+  font-size: 5vw;
+  text-align: center;
 }
 
 @media (max-width: 500px) {

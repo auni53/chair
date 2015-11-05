@@ -56,7 +56,7 @@
             this.setState({list: newList});
           },
           getInitialState: function() {
-            return {list: ["Peter Huycke", "Auni Ahsan"],
+            return {list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"],
                     time: 180, timer: 0, 
                     current: "~"};
           },
@@ -64,7 +64,8 @@
             return (
               <div className="container">
                 <div className="topbar"><h1>SpeakOut</h1></div><br/>
-                <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} />
+                <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} 
+                             remove={this.removeName}/>
                 <Current name={this.state.current} time={this.state.time} timer={this.state.timer} 
                          start={this.start} stop={this.stop}/>
               </div>
@@ -75,9 +76,10 @@
         var SpeakerList = React.createClass({ // Contains the sidebar
           render: function() {
             var select = this.props.select;
+            var remove = this.props.remove;
             var speakerNodes = this.props.list.map(function (speaker) {
               return (
-                <Speaker key={speaker} name={speaker} select={select}/>
+                <Speaker key={speaker} name={speaker} select={select} remove={remove}/>
               );
             });
   
@@ -127,11 +129,17 @@
           handleClick: function(e) {
             e.preventDefault();
             this.props.select(this.props.name);
-          },  
+          },
+          handleRemove: function() {
+            this.props.remove(this.props.name);
+          }, 
           render: function() {
             return (
-              <div className="speaker" onClick={this.handleClick}>
-                {this.props.name}
+              <div className="speaker">
+                <div onClick={this.handleClick}>
+                  {this.props.name}
+                </div>
+                <div className="remove" onClick={this.handleRemove}/>
               </div>
             );
           }
