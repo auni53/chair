@@ -120,6 +120,10 @@ input[type="text"]:focus {
   overflow: auto;
 }
 
+.speakerName { /*
+  max-width: 90%; */
+}
+
 .remove {
   background-image: url('../res/remove.png');
   background-repeat: no-repeat;
@@ -129,7 +133,7 @@ input[type="text"]:focus {
  
   height: 20px;
   width: 20px;
-  flex-basis: content;
+  flex-shrink: 0;
 }
 
 .remove:hover {
