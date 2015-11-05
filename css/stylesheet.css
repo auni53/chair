@@ -120,14 +120,14 @@ input[type="text"]:focus {
   overflow: auto;
 }
 
-.speakerName { /*
-  max-width: 90%; */
+.speakerName { 
+  overflow: auto;
 }
 
 .remove {
-  background-image: url('../res/remove.png');
+  background-image: url('../res/icons.png');
   background-repeat: no-repeat;
-  background-size: 20px 80px;
+  background-size: 40px 80px;
   background-position: -0px -20px;
   margin: 0px; 
  
@@ -136,7 +136,7 @@ input[type="text"]:focus {
   flex-shrink: 0;
 }
 
-.speaker:hover, .timer:hover {
+.speaker:hover, .timerMain:hover {
   background-color: #C3B299;
 }
 
@@ -153,15 +153,20 @@ input[type="text"]:focus {
   font-size: 0.25em;
 }
 
-.timer {
-  padding-left: 35px;
+.timerMain {
+  padding-left: 55px;
   padding-right: 35px;
   margin-bottom: 75px;
   border-radius: 20px;
 }
 
+.timerMain {
+  line-height: 18vw;
+}
+
 .icon {
   font-size: 5vw;
+  line-height: 5vw;
   text-align: center;
 }
 
@@ -169,7 +174,8 @@ input[type="text"]:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 25%;
+  margin-left: 5px;
+  padding-bottom: 18%;
 }
 
 .increase, .decrease {
@@ -183,9 +189,18 @@ input[type="text"]:focus {
   width: 50px;
   font-size: 4vw;
   font-weight: bold;
+
+  background-image: url('../res/icons.png');
+  background-repeat: no-repeat;
+  background-size: 100px 200px;
+}
+
+.increase {
+  background-position: 0px -100px; 
 }
 
 .decrease {
+  background-position: 0px -150px; 
   margin-top: 20%;
 }
 
