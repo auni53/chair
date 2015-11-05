@@ -1,26 +1,26 @@
 var Container = React.createClass({
   start: function() {
     if (this.state.time == 0) return; // Disable start when time complete
-    this.timeDown();
-    var newTimer = setInterval(this.timeDown, 1000); // Decerent time every 1000 ms
+    this.changeTime(-1);
+    var newTimer = setInterval(function() {this.changeTime(-1); }, 1000); // Decrement time every 1000 ms
     this.setState({timer: newTimer});
   },
   stop: function() { // Pause the timer
     clearInterval(this.state.timer);
     this.setState({timer: 0}); // Reset timer variable
   },
-  timeDown: function() { // Decrement time by a second
-    var newTime = this.state.time - 1;
-    this.setState({time: newTime});
-    if (newTime == 0) { // End timer when time is complete
+  changeTime: function(diff) { // Change the time by diff seconds
+    var newTime = this.state.time + diff;
+
+    if (newTime >= 0) // Set the time if valid
+      this.setState({time: newTime});
+    if (newTime == 0) // End timer when time is complete
       clearInterval(this.state.timer);
-    }
   },
   handleSelect: function(name) { // Call when a new name is selected
     this.setState({current: name, time: 180, timer: 0});
     clearInterval(this.state.timer);
     this.removeName(name);
-
   },
   removeName: function(name) { // Remove a name from the speaking list
     var newList = this.state.list;
@@ -41,16 +41,15 @@ var Container = React.createClass({
 
     this.sortList();
   },
-  changeTime: function(diff) { // Change the time by diff seconds
-    var newTime = this.state.time + diff;
-    this.setState({time: newTime});
-  },
   sortList: function() {
-    console.log(this.state.list.length); 
 
     var newList = this.state.list.length;
+    var counts = this.state.count;
     for (var i=0; i < newList; i++) {
-      console.log('hey');  
+      while (counts[newList[i+1]] && counts[newList[i]] > counts[newList[i+1]])
+        var temp = newList[i];
+        newList[i] = newList[i+1];
+        newList[i+1] = temp;
     }
     return;
   },
@@ -201,8 +200,8 @@ var Timer = React.createClass({
           </div>
         </btn>
         <div className="timerButtons">
-          <btn className="increase" type="button" onClick={this.handleTime}></btn>
-          <btn className="decrease" type="button" onClick={this.handleTime}></btn>
+          <btn className="increase" type="button" onClick={this.handleTime}>+</btn>
+          <btn className="decrease" type="button" onClick={this.handleTime}>-</btn>
         </div> 
            
       </div>

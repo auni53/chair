@@ -190,9 +190,12 @@ input[type="text"]:focus {
   font-size: 4vw;
   font-weight: bold;
 
+  line-height: 0; 
+  /*
   background-image: url('../res/icons.png');
   background-repeat: no-repeat;
   background-size: 100px 200px;
+  */
 }
 
 .increase {
