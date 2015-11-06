@@ -125,7 +125,7 @@ input[type="text"]:focus {
 }
 
 .remove {
-  background-image: url('../res/pauses.png');
+  background-image: url('../res/icons.png');
   background-repeat: no-repeat;
   background-size: 40px 80px;
   background-position: -0px -20px;
