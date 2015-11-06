@@ -43,27 +43,29 @@ var Container = React.createClass({
     this.sortList();
   },
   sortList: function() {
-
-    var newList = this.state.list.length;
+    var newList = this.state.list;
     var counts = this.state.count;
-    for (var i=0; i < newList; i++) {
-      while (counts[newList[i+1]] && counts[newList[i]] > counts[newList[i+1]])
+    for (var i=0; i < (newList.length - 1); i++) {
+      while (counts[newList[i]] > counts[newList[i+1]]) {
+        console.log('hi');
         var temp = newList[i];
         newList[i] = newList[i+1];
         newList[i+1] = temp;
+      }
     }
-    return;
   },
   getInitialState: function() {
-    return {list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"],
+    return {
+            list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"],
             time: 180, timer: 0, // Current time remaining, and ID for the timer interval
             current: "", // Current name displayed
-            count: {}}; // Dictionary of speaking time counts
+            count: {"Vere-Marie Khan":2} // Dictionary of speaking time counts
+           }
   },
   render: function() {
     return (
       <div className="container">
-        <div className="topbar"><h1>SpeakOut</h1></div><br/>
+        <div className="topbar"><h1><b>Speak</b>Out</h1></div><br/>
         <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} 
                      remove={this.removeName}/>
         <Current name={this.state.current} time={this.state.time} timer={this.state.timer} 
@@ -194,15 +196,15 @@ var Timer = React.createClass({
       <div className="timerContainer">
         <btn className="timerMain" onClick={this.handleClick}>
           {this.getMin()}:{this.getSec()}<br/>
-          <div className="icon">
-              {this.props.timer == 0 ?
-               String.fromCharCode(9658) :
-               String.fromCharCode(10073) + String.fromCharCode(10073) }
-          </div>
         </btn>
         <div className="timerButtons">
           <btn className="increase" type="button" onClick={this.handleTime}>+</btn>
           <btn className="decrease" type="button" onClick={this.handleTime}>-</btn>
+          <btn className="pause" type="button" onClick={this.handleClick}>
+              {this.props.timer == 0 ?
+               String.fromCharCode(9658) :
+               String.fromCharCode(10073) + String.fromCharCode(10073) }
+          </btn>
         </div> 
            
       </div>
