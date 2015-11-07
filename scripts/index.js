@@ -199,7 +199,9 @@ var Timer = React.createClass({
         </btn>
         <div className="timerButtons">
           <btn className="increase" type="button" onClick={this.handleTime}>+</btn>
-          <btn className="decrease" type="button" onClick={this.handleTime}>-</btn>
+          <btn className="decrease" type="button" onClick={this.handleTime}>
+            {String.fromCharCode(8722)}
+          </btn>
           <btn className="pause" type="button" onClick={this.handleClick}>
               {this.props.timer == 0 ?
                String.fromCharCode(9658) :
