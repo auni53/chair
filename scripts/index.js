@@ -30,7 +30,7 @@ var Container = React.createClass({
     this.setState({list: newList});
    
     /* Update the speaking counts */ 
-    var newCount = this.state.count;
+    var newCount = this.state.counts;
     if (newCount[name]) newCount[name]++;
     else newCount[name] = 1;
     this.setState({count: newCount});
@@ -38,28 +38,39 @@ var Container = React.createClass({
   handleAddName: function(name) { // Call when a new name is added
     var list = this.state.list;
     var newList = list.concat([name]);
-    this.setState({list: newList});
 
-    this.sortList();
+    console.log(newList);
+    this.setState({"list":newList});
+    console.log(this.state.list);
+    // this.sortList();
   },
   sortList: function() {
+    /* Sort the speaking list with
+       first-time speaking */
     var newList = this.state.list;
-    var counts = this.state.count;
+    var counts = this.state.counts;
     for (var i=0; i < (newList.length - 1); i++) {
-      while (counts[newList[i]] > counts[newList[i+1]]) {
-        console.log('hi');
-        var temp = newList[i];
-        newList[i] = newList[i+1];
-        newList[i+1] = temp;
+      var c = i;
+      while (counts[newList[c]] > counts[newList[c+1]]) {
+        var temp = newList[c];
+        newList[c] = newList[c+1];
+        newList[c+1] = temp;
+        c++;
       }
     }
+    
+    this.setState({"list":newList});
+  },
+  componentDidMount: function() {
+    console.log(this.state.list);
+    this.sortList();
   },
   getInitialState: function() {
     return {
-            list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"],
+            list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"], // Ordered Speaking List
             time: 180, timer: 0, // Current time remaining, and ID for the timer interval
             current: "", // Current name displayed
-            count: {"Vere-Marie Khan":2} // Dictionary of speaking time counts
+            counts: {"Peter Zhang": 5, "Auni Ahsan": 1, "Ben Coleman": 2, "Vere-Marie Khan": 4} // Dictionary of speaking time counts
            }
   },
   render: function() {
