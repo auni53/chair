@@ -37,20 +37,30 @@ var Container = React.createClass({
   },
   handleAddName: function(name) { // Call when a new name is added
     var list = this.state.list;
+    
+    var i = list.length - 1;
     var newList = list.concat([name]);
 
-    console.log(newList);
-    this.setState({"list":newList});
-    console.log(this.state.list);
-    // this.sortList();
+    var newCounts = this.state.counts;
+    if (newCounts[name] == undefined) {
+      newCounts[name] = 0;
+      this.setState({"counts":newCounts});
+    }
+
+    this.sortList(newList);
+
   },
-  sortList: function() {
-    /* Sort the speaking list with
-       first-time speaking */
-    var newList = this.state.list;
+  sortList: function(list) {
+    /* Sort the speaking list with first-time speaking 
+     */
+    var newList = list;
     var counts = this.state.counts;
     for (var i=0; i < (newList.length - 1); i++) {
       var c = i;
+
+      console.log('Compared ' + newList[c] + counts[newList[c]] + 
+                     ' to ' + newList[c+1] + counts[newList[c+1]]);
+      if (counts[newList[c]] > counts[newList[c+1]]) i--;
       while (counts[newList[c]] > counts[newList[c+1]]) {
         var temp = newList[c];
         newList[c] = newList[c+1];
@@ -62,18 +72,20 @@ var Container = React.createClass({
     this.setState({"list":newList});
   },
   componentDidMount: function() {
-    console.log(this.state.list);
-    this.sortList();
+    // this.sortList(this.state.list);
   },
   getInitialState: function() {
     return {
-            list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"], // Ordered Speaking List
+            list: [], counts: {},
             time: 180, timer: 0, // Current time remaining, and ID for the timer interval
             current: "", // Current name displayed
-            counts: {"Peter Zhang": 5, "Auni Ahsan": 1, "Ben Coleman": 2, "Vere-Marie Khan": 4} // Dictionary of speaking time counts
+            // list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"], // Ordered Speaking List
+            // counts: {"Peter Zhang": 5, "Auni Ahsan": 4, "Ben Coleman": 3, "Vere Marie Khan": 1} // Dictionary of speaking time counts
            }
   },
   render: function() {
+    console.log(this.state.list);
+    console.log(this.state.counts);
     return (
       <div className="container">
         <div className="topbar"><h1><b>Speak</b>Out</h1></div><br/>
@@ -115,7 +127,7 @@ var Form = React.createClass({
       minchars: 1,
       maxItems: 3,
       autoFirst: true,
-      list: ["Ben Coleman", "Ryan Gomes", "Jasmine Denike", "Sania Khan", "Vere Marie Khan", "Akshan Bansal", "Ebi Agbeyegbe", "Nick Grant", "Khrystyna Zhuk", "Nicole Thompson", "Angelo Gio Matteo", "Steve Warner", "Auni Ahsan", "Daman Singh", "Ryan Hume", "Jess Afonso", "Priya Kaur", "Danielle Sardella", "Danni Zuo", "Peter Zhang", "Zachary Bist", "Matthew Celestial", "Cailyn Stewart", "Nathan Gibson", "Anastasia Harovska", "Riaz Sayani-Mulji", "Rebecca Jackson", "Caitlin Pascoe", "Ilan Zimner", "Jason Lo", "Mattias Memmel", "Ernest Manalo", "John Deepak Sundara", "Nia Imara Barberousse", "Carlos Antonio Fiel", "Josh Calafato", "Raffi Dergalstanian", "Emily Xu", "Adriana Menghi", "Nasrin Gh", "Emerson Calcada", "Maheen Farrukh", "Abdulla Omari", "Falhad Mohamoud", "Farah Noori", "Hashim Yussuf", "Sana Chishti"] 
+      list: ["Ben Coleman", "Ryan Gomes", "Jasmine Denike", "Sania Khan", "Vere Marie Khan", "Akshan Bansal", "Ebi Agbeyegbe", "Nick Grant", "Khrystyna Zhuk", "Nicole Thompson", "Angelo Gio Matteo", "Steve Warner", "Auni Ahsan", "Daman Singh", "Ryan Hume", "Jess Afonso", "Priya Kaur", "Danielle Sardella", "Danni Zuo", "Peter Zhang", "Zachary Bist", "Matthew Celestial", "Cailyn Stewart", "Nathan Gibson", "Anastasia Harovska", "Riaz Sayani-Mulji", "Rebecca Jackson", "Caitlin Pascoe", "Ilan Zimner", "Jason Lo", "Mathias Memmel", "Ernest Manalo", "John Deepak Sundara", "Nia Imara Barberousse", "Carlos Antonio Fiel", "Josh Calafato", "Raffi Dergalstanian", "Emily Xu", "Adriana Menghi", "Nasrin Gh", "Emerson Calcada", "Maheen Farrukh", "Abdulla Omari", "Falhad Mohamoud", "Farah Noori", "Hashim Yussuf", "Sana Chishti"] 
     });
     this.refs.name.focus(); 
   },
