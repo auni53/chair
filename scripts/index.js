@@ -19,9 +19,12 @@ var Container = React.createClass({
       clearInterval(this.state.timer);
   },
   handleSelect: function(name) { // Call when a new name is selected
+   
     this.setState({current: name, time: 180, timer: 0});
+    
     clearInterval(this.state.timer);
     this.removeName(name);
+    this.start();
   },
   removeName: function(name) { // Remove a name from the speaking list
     var newList = this.state.list;
@@ -55,20 +58,14 @@ var Container = React.createClass({
      */
     var newList = list;
     var counts = this.state.counts;
-    for (var i=0; i < (newList.length - 1); i++) {
-      var c = i;
 
-      console.log('Compared ' + newList[c] + counts[newList[c]] + 
-                     ' to ' + newList[c+1] + counts[newList[c+1]]);
-      if (counts[newList[c]] > counts[newList[c+1]]) i--;
-      while (counts[newList[c]] > counts[newList[c+1]]) {
-        var temp = newList[c];
-        newList[c] = newList[c+1];
-        newList[c+1] = temp;
-        c++;
-      }
+    var c = newList.length - 1;
+    while (counts[newList[c]] < counts[newList[c-1]]) {
+      var temp = newList[c];
+      newList[c] = newList[c-1];
+      newList[c-1] = temp;
+      c--;
     }
-    
     this.setState({"list":newList});
   },
   componentDidMount: function() {
@@ -154,8 +151,8 @@ var Form = React.createClass({
 var Speaker = React.createClass({
   render: function() {
     return (
-      <div className="speaker">
-        <span className="speakerName" onClick={this.handleClick}>
+      <div className="speaker" onClick={this.handleClick}>
+        <span className="speakerName">
           {this.props.name}
         </span>
         <span className="remove" onClick={this.handleRemove}/>
@@ -210,7 +207,6 @@ var Timer = React.createClass({
     }
   },
   handleTime: function(e) { 
-
     this.props.changeTime(e.target.className == "increase" ?
                           60 : -60);
   },

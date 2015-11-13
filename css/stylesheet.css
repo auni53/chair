@@ -7,14 +7,14 @@ body, #hook, .container {
 }
 
 body { 
-  font-family: Roboto, sans-serif;
+  font-family: Roboto, Helvetica Neue, sans-serif;
   color: #353535;
   background-color: #E1EAED;
   margin: 0px;
 }
 
 h1 {
-  font-family: Gotham, Helvetica Neue, sans-serif;
+  font-family: Gotham, Roboto, Helvetica Neue, sans-serif;
   font-weight: normal;
   font-size: 4em;
 
