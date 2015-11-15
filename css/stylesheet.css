@@ -1,24 +1,24 @@
 /* Fonts */
 @font-face {
   font-family: Gotham;
-  src: url('assets/GothamHTF-Light.ttf');
+  src: url('../assets/GothamHTF-Light.ttf');
 }
 
 @font-face {
   font-family: Gotham;
-  src: url('assets/GothamHTF-Bold.ttf');
+  src: url('../assets/GothamHTF-Bold.ttf');
   font-weight: bold;
 }
 
 @font-face {
   font-family: Gotham;
-  src: url('assets/GothamHTF-Medium.ttf');
+  src: url('../assets/GothamHTF-Medium.ttf');
   font-weight: 300;
 }
 
 @font-face {
   font-family: Gotham;
-  src: url('assets/GothamHTF-Thin.ttf');
+  src: url('../assets/GothamHTF-Thin.ttf');
   font-weight: 100;
 }
 
@@ -33,7 +33,7 @@ body, #hook, .container {
 body { 
   font-family: Roboto, Helvetica Neue, sans-serif;
   color: #F6EDDC;
-  background-color: #F6EDDC;
+  background-color: #FAF6ED;
   margin: 0px;
 }
 
@@ -41,7 +41,7 @@ h1 {
   font-family: Gotham, Roboto, Helvetica Neue, sans-serif;
   font-weight: normal;
   font-size: 4em;
-  color: #F6EDDC;
+  color: #FAF6ED;
 
   margin-top: 0px;
   margin-bottom: 0px;
@@ -62,11 +62,10 @@ h1 {
 
   background-color: #586875;
   width: 100%; 
-  height: 11.5%;
   margin-bottom: 0px;
   border-bottom: 4px solid #666060;
-  padding-top: 4px;
-  padding-bottom: 0px;
+  padding-top: 2vh;
+  padding-bottom: 0vh;
 }
 
 .sidebar {
@@ -145,6 +144,7 @@ input[type="text"]:focus {
 
   font-size: 2em;
   font-weight: bold;
+  color: #364653;
   
   padding: 2px;
   padding-left: 10px;
@@ -158,7 +158,7 @@ input[type="text"]:focus {
 }
 
 .remove {
-  background-image: url('../assets/icons.png');
+  background-image: url('../../assets/icons.png');
   background-repeat: no-repeat;
   background-size: 40px 80px;
   background-position: -0px -20px;
@@ -170,7 +170,7 @@ input[type="text"]:focus {
 }
 
 .speaker:hover, .timerMain:hover {
-  background-color: #BDD6D2;
+  background-color: #F6EDDC;
 }
 
 .remove:hover {
@@ -254,6 +254,8 @@ input[type="text"]:focus {
 
 .increase:hover, .decrease:hover, .pause:hover {
   background-color: #C3B299;
+  background-color: #BDD6D2;
+
 }
 
 @media (max-width: 500px) {

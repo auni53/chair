@@ -86,7 +86,12 @@ var Container = React.createClass({
     console.log(this.state.counts);
     return (
       <div className="container">
-        <div className="topbar"><h1><b>Speak</b>Out</h1></div><br/>
+        <div className="topbar">
+          <h1>
+            <span style={{"fontWeight": 300}}>Speak</span>
+            <span style={{"fontWeight": 100}}>Out</span>
+          </h1>
+        </div><br/>
         <SpeakerList add={this.handleAddName} list={this.state.list} select={this.handleSelect} 
                      remove={this.removeName}/>
         <Current name={this.state.current} time={this.state.time} timer={this.state.timer} 
