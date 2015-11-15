@@ -13,16 +13,17 @@ var Container = React.createClass({
   changeTime: function(diff) { // Change the time by diff seconds
     var newTime = this.state.time + diff;
 
-    if (newTime >= 0) // Set the time if valid
-      this.setState({time: newTime});
+    if (newTime < 0) // Set the time if valid
+      newTime = 0;
+    this.setState({time: newTime});
     if (newTime == 0) // End timer when time is complete
       clearInterval(this.state.timer);
   },
   handleSelect: function(name) { // Call when a new name is selected
    
-    this.setState({current: name, time: 180, timer: 0});
-    
     clearInterval(this.state.timer);
+    this.setState({current: name, time: 180, timer: 0});
+
     this.removeName(name);
     this.start();
   },
