@@ -77,7 +77,7 @@ var Container = React.createClass({
             list: [], counts: {},
             time: 180, timer: 0, // Current time remaining, and ID for the timer interval
             current: "", // Current name displayed
-            // list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere-Marie Khan"], // Ordered Speaking List
+            list: ["Peter Zhang", "Auni Ahsan", "Ben Coleman", "Vere Marie Khan"], // Ordered Speaking List
             // counts: {"Peter Zhang": 5, "Auni Ahsan": 4, "Ben Coleman": 3, "Vere Marie Khan": 1} // Dictionary of speaking time counts
            }
   },

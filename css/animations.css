@@ -1,9 +1,8 @@
 @keyframes attempt {
-  0%   { background-color: red; }
-  100% { background-color: yellow; }
+  50%  { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .speaker {
- /* animation: attempt 5s; infinite; 
-  background-color: red; */
+  animation: attempt 3s infinite; 
 }
