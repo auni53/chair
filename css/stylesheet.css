@@ -1,3 +1,27 @@
+/* Fonts */
+@font-face {
+  font-family: Gotham;
+  src: url('assets/GothamHTF-Light.ttf');
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('assets/GothamHTF-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('assets/GothamHTF-Medium.ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('assets/GothamHTF-Thin.ttf');
+  font-weight: 100;
+}
+
 html {
   height: 100%;
 }
@@ -8,8 +32,8 @@ body, #hook, .container {
 
 body { 
   font-family: Roboto, Helvetica Neue, sans-serif;
-  color: #353535;
-  background-color: #EDE3B4;
+  color: #F6EDDC;
+  background-color: #F6EDDC;
   margin: 0px;
 }
 
@@ -17,6 +41,7 @@ h1 {
   font-family: Gotham, Roboto, Helvetica Neue, sans-serif;
   font-weight: normal;
   font-size: 4em;
+  color: #F6EDDC;
 
   margin-top: 0px;
   margin-bottom: 0px;
@@ -35,8 +60,7 @@ h1 {
 .topbar {
   flex-basis: auto;
 
-  color: #F7F7F7; color: black;
-  background-color: #8B9E9B;
+  background-color: #586875;
   width: 100%; 
   height: 11.5%;
   margin-bottom: 0px;
@@ -48,7 +72,7 @@ h1 {
 .sidebar {
   width: 25%;
 
-  background-color: #E6B39A;
+  background-color: #A5C8CA;
   border-right: 4px solid #666060;
 }
 
@@ -134,7 +158,7 @@ input[type="text"]:focus {
 }
 
 .remove {
-  background-image: url('../res/icons.png');
+  background-image: url('../assets/icons.png');
   background-repeat: no-repeat;
   background-size: 40px 80px;
   background-position: -0px -20px;
@@ -146,7 +170,7 @@ input[type="text"]:focus {
 }
 
 .speaker:hover, .timerMain:hover {
-  background-color: #E6CBA5;
+  background-color: #BDD6D2;
 }
 
 .remove:hover {
@@ -156,6 +180,8 @@ input[type="text"]:focus {
 .timerContainer {
   display: flex;
   flex-direction: row;
+
+  color: #586875;
 }
 
 .curName {
@@ -193,7 +219,7 @@ input[type="text"]:focus {
   align-items: center;
 
   color: white;
-  background-color: #353535;
+  background-color: #586875;
   width: 4vw;
   height: 4vw;
 

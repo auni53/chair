@@ -1,11 +1,9 @@
-/*@keyframes attempt {
+@keyframes attempt {
   0%   { background-color: red; }
   100% { background-color: yellow; }
 }
 
 .speaker {
-  animation-name: attempt;
-  animation-duration: 4s;
-  animation-iteration: infinite;
+  animation: attempt 5s;/* infinite; */
   background-color: red;
-}*/
+}
