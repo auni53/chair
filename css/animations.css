@@ -4,6 +4,6 @@
 }
 
 .speaker {
-  animation: attempt 5s;/* infinite; */
+ /* animation: attempt 5s;/* infinite; */
   background-color: red;
 }
