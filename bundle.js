@@ -130,7 +130,8 @@ var Form = React.createClass({
       minchars: 1,
       maxItems: 3,
       autoFirst: true,
-      list: ["Ben Coleman", "Ryan Gomes", "Jasmine Denike", "Sania Khan", "Vere Marie Khan", "Akshan Bansal", "Ebi Agbeyegbe", "Nick Grant", "Khrystyna Zhuk", "Nicole Thompson", "Angelo Gio Matteo", "Steve Warner", "Auni Ahsan", "Daman Singh", "Ryan Hume", "Jess Afonso", "Priya Kaur", "Danielle Sardella", "Danni Zuo", "Peter Zhang", "Zachary Bist", "Matthew Celestial", "Cailyn Stewart", "Nathan Gibson", "Anastasia Harovska", "Riaz Sayani-Mulji", "Rebecca Jackson", "Caitlin Pascoe", "Ilan Zimner", "Jason Lo", "Mathias Memmel", "Ernest Manalo", "John Deepak Sundara", "Nia Imara Barberousse", "Carlos Antonio Fiel", "Josh Calafato", "Raffi Dergalstanian", "Emily Xu", "Adriana Menghi", "Nasrin Gh", "Emerson Calcada", "Maheen Farrukh", "Abdulla Omari", "Falhad Mohamoud", "Farah Noori", "Hashim Yussuf", "Sana Chishti"] 
+      list: ["Ben Coleman", "Ryan Gomes", "Jasmine Denike", "Sania Khan", "Vere Marie Khan", "Akshan Bansal", "Ebi Agbeyegbe", "Nick Grant", "Khrystyna Zhuk", "Nicole Thompson", "Angelo Gio Matteo", "Steve Warner", "Auni Ahsan", "Daman Singh", "Ryan Hume", "Jess Afonso", "Priya Kaur", "Danielle Sardella", "Danni Zuo", "Peter Zhang", "Zachary Bist", "Matthew Celestial", "Cailyn Stewart", "Nathan Gibson", "Anastasia Harovska", "Riaz Sayani-Mulji", "Rebecca Jackson", "Caitlin Pascoe", "Ilan Zimner", "Jason Lo", "Mathias Memmel", "Ernest Manalo", "John Deepak Sundara", "Nia Imara Barberousse", "Carlos Antonio Fiel", "Josh Calafato", "Raffi Dergalstanian", "Emily Xu", "Adriana Menghi", "Raffi Dergalstanian", "Emerson Calcada", "Maheen Farrukh", "Abdulla Omari", "Falhad Mohamoud", "Farah Noori", "Hashim Yussuf", "Sana Chishti",
+            "Brad Evoy", "Esman Calles", "Tka Pinnock", "Ben Coleslaw"] 
     });
     this.refs.name.focus(); 
   },

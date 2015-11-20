@@ -1,8 +1,8 @@
-@keyframes attempt {
+/*@keyframes attempt {
   50%  { transform: rotate(180deg); }
   100% { transform: rotate(360deg); }
 }
 
-.speaker {
+* {
   animation: attempt 3s infinite; 
-}
+}*/
