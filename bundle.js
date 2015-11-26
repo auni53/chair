@@ -82,8 +82,6 @@ var Container = React.createClass({
            }
   },
   render: function() {
-    console.log(this.state.list);
-    console.log(this.state.counts);
     return (
       <div className="container">
         <div className="topbar">
@@ -101,13 +99,15 @@ var Container = React.createClass({
   }
 });
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var SpeakerList = React.createClass({ // Contains the sidebar
   render: function() {
     var select = this.props.select;
     var remove = this.props.remove;
     var speakerNodes = this.props.list.map(function (speaker) {
       return (
-        <Speaker key={speaker} name={speaker} select={select} remove={remove}/>
+          <Speaker key={speaker} name={speaker} select={select} remove={remove}/>
       );
     });
 
@@ -131,8 +131,8 @@ var Form = React.createClass({
       maxItems: 3,
       autoFirst: true,
       list: ["Ben Coleman", "Ryan Gomes", "Jasmine Denike", "Sania Khan", "Vere Marie Khan", "Akshan Bansal", "Ebi Agbeyegbe", "Nick Grant", "Khrystyna Zhuk", "Nicole Thompson", "Angelo Gio Matteo", "Steve Warner", "Auni Ahsan", "Daman Singh", "Ryan Hume", "Jess Afonso", "Priya Kaur", "Danielle Sardella", "Danni Zuo", "Peter Zhang", "Zachary Bist", "Matthew Celestial", "Cailyn Stewart", "Nathan Gibson", "Anastasia Harovska", "Riaz Sayani-Mulji", "Rebecca Jackson", "Caitlin Pascoe", "Ilan Zimner", "Jason Lo", "Mathias Memmel", "Ernest Manalo", "John Deepak Sundara", "Nia Imara Barberousse", "Carlos Antonio Fiel", "Josh Calafato", "Raffi Dergalstanian", "Emily Xu", "Adriana Menghi", "Raffi Dergalstanian", "Emerson Calcada", "Maheen Farrukh", "Abdulla Omari", "Falhad Mohamoud", "Farah Noori", "Hashim Yussuf", "Sana Chishti",
-            "Brad Evoy", "Esman Calles", "Tka Pinnock", "Ben Coleslaw"],
-      list: ["Emily Dyer", "Golda Greenspoon", "Peter Huycke", "Saambavi Mano ", "Ben Atkins ", "Gabriel Zoltan-Johan", "Alex Martinborough", "Rahul Christoffersen", "Lucinda Qu", "Michelle Vacarciuc ", "Sumeeta Farrukh", "Anna Pozdniakova", "Claire Wilkens ", "Stuart Norton ", "Leila Atri", "Alice Sluchenkov", "Shannon Brown ", "Seraphina V-Hart ", "George Wilson ", "Cricket Cheng ", "Hannah Brennen ", "Carl Abrahamsen", "William Cuddy", "Miranda Alksnis"] 
+            "Brad Evoy", "Esman Calles", "Tka Pinnock", "Ben Coleslaw"]
+      // list: ["Emily Dyer", "Golda Greenspoon", "Peter Huycke", "Saambavi Mano ", "Ben Atkins ", "Gabriel Zoltan-Johan", "Alex Martinborough", "Rahul Christoffersen", "Lucinda Qu", "Michelle Vacarciuc ", "Sumeeta Farrukh", "Anna Pozdniakova", "Claire Wilkens ", "Stuart Norton ", "Leila Atri", "Alice Sluchenkov", "Shannon Brown ", "Seraphina V-Hart ", "George Wilson ", "Cricket Cheng ", "Hannah Brennen ", "Carl Abrahamsen", "William Cuddy", "Miranda Alksnis"] 
     });
     this.refs.name.focus(); 
   },
@@ -159,12 +159,16 @@ var Form = React.createClass({
 var Speaker = React.createClass({
   render: function() {
     return (
-      <div className="speaker" onClick={this.handleClick}>
-        <span className="speakerName">
-          {this.props.name}
-        </span>
-        <span className="remove" onClick={this.handleRemove}/>
-      </div>
+        <ReactCSSTransitionGroup transitionName="list"
+                                 transititionEnterTimeout={100}
+                                 transitionLeaveTimeout={100}>
+          <div className="speaker" onClick={this.handleClick}>
+            <span className="speakerName">
+              {this.props.name}
+            </span>
+            <span className="remove" onClick={this.handleRemove}/>
+          </div>
+        </ReactCSSTransitionGroup>
     );
   },
   handleClick: function(e) {

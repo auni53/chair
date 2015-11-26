@@ -187,6 +187,7 @@ input[type="text"]:focus {
 .curName {
   font-weight: bold;
   font-size: 2.35em;
+  color: #364653;
 }
 
 .timerContainer {
