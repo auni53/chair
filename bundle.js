@@ -130,10 +130,9 @@ var Form = React.createClass({
       minchars: 1,
       maxItems: 3,
       autoFirst: true,
-      list: ["Ben Coleman", "Ryan Gomes", "Jasmine Denike", "Sania Khan", "Vere Marie Khan", "Akshan Bansal", "Ebi Agbeyegbe", "Nick Grant", "Khrystyna Zhuk", "Nicole Thompson", "Angelo Gio Matteo", "Steve Warner", "Auni Ahsan", "Daman Singh", "Ryan Hume", "Jess Afonso", "Priya Kaur", "Danielle Sardella", "Danni Zuo", "Peter Zhang", "Zachary Bist", "Matthew Celestial", "Cailyn Stewart", "Nathan Gibson", "Anastasia Harovska", "Riaz Sayani-Mulji", "Rebecca Jackson", "Caitlin Pascoe", "Ilan Zimner", "Jason Lo", "Mathias Memmel", "Ernest Manalo", "John Deepak Sundara", "Nia Imara Barberousse", "Carlos Antonio Fiel", "Josh Calafato", "Raffi Dergalstanian", "Emily Xu", "Adriana Menghi", "Raffi Dergalstanian", "Emerson Calcada", "Maheen Farrukh", "Abdulla Omari", "Falhad Mohamoud", "Farah Noori", "Hashim Yussuf", "Sana Chishti",
-            "Brad Evoy", "Esman Calles", "Tka Pinnock", "Ben Coleslaw",
-            "Jonathan Webb", "Christina Badiola"]
-      // list: ["Emily Dyer", "Golda Greenspoon", "Peter Huycke", "Saambavi Mano ", "Ben Atkins ", "Gabriel Zoltan-Johan", "Alex Martinborough", "Rahul Christoffersen", "Lucinda Qu", "Michelle Vacarciuc ", "Sumeeta Farrukh", "Anna Pozdniakova", "Claire Wilkens ", "Stuart Norton ", "Leila Atri", "Alice Sluchenkov", "Shannon Brown ", "Seraphina V-Hart ", "George Wilson ", "Cricket Cheng ", "Hannah Brennen ", "Carl Abrahamsen", "William Cuddy", "Miranda Alksnis"] 
+      list: [
+        "Stuart Norton","Rahul Christoffersen","Golda Greenspoon","Stephen Warner","Hannah Brennen","Zahavah Kay","Jamil Fiorino-Habib","Nina Christianson","Olivia Klasios","Nicole Gumapac","Artimes Ghahremani","Taylor Cenac","Shailee Koranne","Saambavi Mano"
+      ],
     });
     this.refs.name.focus(); 
   },
